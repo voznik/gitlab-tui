@@ -1,5 +1,8 @@
 // use gitlab;
 use gitlab::{types::Issue, MergeRequest, Project};
+
+use crate::config::Config;
+
 #[derive(Debug, PartialEq, Clone, Copy)]
 pub enum ActiveBlock {
     IssueList,
@@ -8,6 +11,7 @@ pub enum ActiveBlock {
 }
 #[derive(Debug)]
 pub struct App {
+    pub config: Config,
     pub issues: Vec<Issue>,
     pub mrs: Vec<MergeRequest>,
     pub project: Option<Project>,
@@ -25,13 +29,14 @@ pub struct App {
 
 impl Default for App {
     fn default() -> Self {
-        App::new()
+        App::new(Config::default())
     }
 }
 
 impl App {
-    pub fn new() -> Self {
+    pub fn new(config: Config,) -> Self {
         Self {
+            config,
             issues: vec![],
             mrs: vec![],
             project: None,

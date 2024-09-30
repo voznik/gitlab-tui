@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'gitlab-tui'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=gitlab-tui",
+                    "--package=gitlab-tui"
+                ],
+                "filter": {
+                    "name": "gitlab-tui",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'gitlab-tui'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=gitlab-tui",
+                    "--package=gitlab-tui"
+                ],
+                "filter": {
+                    "name": "gitlab-tui",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
